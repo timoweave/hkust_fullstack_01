@@ -1,6 +1,7 @@
 # Full Stack Web Development (HKUST)
 
 Here is the list of files and description
+
 1. part1.html (html w/ action, no css)
 2. part2.html (html w/ action, css)
 3. part3.html (html w/ action, css, js)
