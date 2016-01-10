@@ -12,7 +12,7 @@
 
         <form id="dating_info"
               enctype="multipart/form-data"
-              action="http://ihome.ust.hk/~rossiter/cgi-bin/show_everything.php">
+              action="https://ihome.ust.hk/~rossiter/cgi-bin/show_everything.php">
 
             <fieldset>
                 <legend>Your Face</legend>
@@ -90,9 +90,125 @@
             <input type="submit" value="Submit!" required/>
         </form>
 
-        <div>
-            <link href="dating_web_site.css" rel="stylesheet"/>
-            <script src="dating_web_site.js"></script>
-        </div>
+        <style>
+            * {
+                font-family: helvetica;
+            }
+
+            fieldset {
+                width: 45em; /* 720px ~ 45em, more responsive */
+                margin-bottom: 0.63em; /* 10px ~ 0.63em */
+                background-color: lightyellow;
+                border-color: yellow;
+                border-style: solid;
+                border-width: 0.63em; /* 10px ~ 0.63em */ 
+            }
+
+            fieldset textarea {
+                width: 22.5em;  /* 360px ~ 22.5em */
+                height: 3.125em; /* 50px ~ 3.125em */
+            }
+
+            br+label {
+                width: 11.25em; /* 180px ~ 11.25em*/
+                display: inline-block;
+                text-align: right;
+                vertical-align: top;
+                padding-right: 0.5em;
+            }
+
+            br~input+label {
+                width: auto;
+            }
+
+            br+label:hover,
+            br+label:hover+input,
+            br+label+input:hover
+            {
+                width: 7.45em;
+                font-size:150%;
+            }
+
+            br+label:hover+textarea,
+            br+label+textarea:hover
+            {
+                width: 33.75em;  /* 360px ~ 22.5em */
+                height: 4.69em; /* 50px ~ 3.125em */
+            }
+
+            br+label:hover+span+input,
+            br+label+span:hover+input,
+            br+label+span+input:hover
+            {
+                font-size:150%;
+            }
+
+            br+label:hover~span
+            {
+                width: 2em;
+                font-size:150%;
+                padding-left: 0.4em;
+                padding-right: 0.4em;
+            }
+
+            br+label:hover+label,
+            br+label+label:hover
+            {
+                /* width: 7.45em;*/
+                font-size:150%;
+            }
+
+            br+label~input:hover,
+            br+label:hover~input+label,
+            br+label:hover~select,
+            br+label~select:hover,
+            {
+                width: auto;
+                font-size:150%;
+                padding-left: 0.4em;
+                padding-right: 0.4em;
+            }
+
+            .min_range {
+                display: inline-block;
+                padding-left: 0.75em;
+                padding-right: 0.75em;
+                text-align: center;
+                width: 2em;
+                color: white;
+                background: brown;
+            }
+
+            .max_range {
+                display: inline-block;
+                padding-left: 0.75em;
+                padding-right: 0.75em;
+                width: 2em;
+                color: white;
+                background: purple;
+            }
+
+        </style>
+
+        <script>
+            
+            window.onload = function() {
+                
+                function dating_web_site_preview_img(file_css_selector, preview_elem_id)
+                {
+                    var files = document.querySelectorAll(file_css_selector);
+                    files[0].addEventListener("change", function(e) {
+                        if(this.files && this.files[0]) {
+                            var reader = new FileReader();
+                            reader.onload = function(e) { document.getElementById(preview_elem_id).setAttribute("src", e.target.result); }
+                            reader.readAsDataURL(this.files[0]);
+                        }
+                    });
+                }
+                
+                dating_web_site_preview_img("input[type=file]", "preview")
+            }
+            
+        </script>
     </body>
 </html>
